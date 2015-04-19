@@ -154,7 +154,7 @@ bool ofxAVFoundationVideoPlayer::setPixelFormat(ofPixelFormat value) {
 }
 
 //--------------------------------------------------------------
-ofPixelFormat ofxAVFoundationVideoPlayer::getPixelFormat() const{
+ofPixelFormat ofxAVFoundationVideoPlayer::getPixelFormat(){
 	return pixelFormat;
 }
 
@@ -219,7 +219,7 @@ void ofxAVFoundationVideoPlayer::stop() {
 }		
 
 //--------------------------------------------------------------
-bool ofxAVFoundationVideoPlayer::isFrameNew() const {
+bool ofxAVFoundationVideoPlayer::isFrameNew() {
 	if(videoPlayer != NULL) {
 		return bFrameNew;
 	}	
@@ -488,7 +488,7 @@ void ofxAVFoundationVideoPlayer::killTextureCache() {
 }
 
 //--------------------------------------------------------------
-float ofxAVFoundationVideoPlayer::getWidth() const {
+float ofxAVFoundationVideoPlayer::getWidth() {
     if(videoPlayer == NULL) {
         return 0;
     }
@@ -497,7 +497,7 @@ float ofxAVFoundationVideoPlayer::getWidth() const {
 }
 
 //--------------------------------------------------------------
-float ofxAVFoundationVideoPlayer::getHeight() const {
+float ofxAVFoundationVideoPlayer::getHeight() {
     if(videoPlayer == NULL) {
         return 0;
     }
@@ -506,7 +506,7 @@ float ofxAVFoundationVideoPlayer::getHeight() const {
 }
 
 //--------------------------------------------------------------
-bool ofxAVFoundationVideoPlayer::isPaused() const {
+bool ofxAVFoundationVideoPlayer::isPaused() {
     if(videoPlayer == NULL) {
         return false;
     }
@@ -515,7 +515,7 @@ bool ofxAVFoundationVideoPlayer::isPaused() const {
 }
 
 //--------------------------------------------------------------
-bool ofxAVFoundationVideoPlayer::isLoaded() const {
+bool ofxAVFoundationVideoPlayer::isLoaded() {
     if(videoPlayer == NULL) {
         return false;
     }
@@ -524,7 +524,7 @@ bool ofxAVFoundationVideoPlayer::isLoaded() const {
 }
 
 //--------------------------------------------------------------
-bool ofxAVFoundationVideoPlayer::isPlaying() const {
+bool ofxAVFoundationVideoPlayer::isPlaying() {
     if(videoPlayer == NULL) {
         return false;
     }

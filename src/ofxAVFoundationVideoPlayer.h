@@ -30,25 +30,24 @@ public:
     void draw(float x, float y, float w, float h);
     
 	bool setPixelFormat(ofPixelFormat pixelFormat);
-	ofPixelFormat getPixelFormat() const;
+	ofPixelFormat getPixelFormat();
 	
     void play();
     void stop();
 	
-    bool isFrameNew() const;
-//    const ofPixels & getPixels() const;
+    bool isFrameNew();
     unsigned char * getPixels();
     ofPixels & getPixelsRef();
     ofTexture * getTexture();
     void initTextureCache();
     void killTextureCache();
 	
-    float getWidth() const;
-    float getHeight() const;
+    float getWidth();
+    float getHeight();
 	
-    bool isPaused() const;
-    bool isLoaded() const;
-    bool isPlaying() const;
+    bool isPaused();
+    bool isLoaded();
+    bool isPlaying();
 	
     float getPosition() const;
     float getSpeed() const;
