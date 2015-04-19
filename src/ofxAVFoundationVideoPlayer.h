@@ -36,9 +36,10 @@ public:
     void stop();
 	
     bool isFrameNew() const;
-    const ofPixels & getPixels() const;
-    ofPixels & getPixels();
-    ofTexture * getTexturePtr();
+//    const ofPixels & getPixels() const;
+    unsigned char * getPixels();
+    ofPixels & getPixelsRef();
+    ofTexture * getTexture();
     void initTextureCache();
     void killTextureCache();
 	
@@ -72,9 +73,9 @@ public:
 	void * getAVFoundationVideoPlayer();
     
     OF_DEPRECATED_MSG("ofxAVFoundationVideoPlayer::loadMovie() is deprecated, use load() instead.", bool loadMovie(string name));
-    OF_DEPRECATED_MSG("ofxAVFoundationVideoPlayer::getPixelsRef() is deprecated, use getPixels() instead.", ofPixels & getPixelsRef());
+//    OF_DEPRECATED_MSG("ofxAVFoundationVideoPlayer::getPixelsRef() is deprecated, use getPixels() instead.", ofPixels & getPixelsRef());
     OF_DEPRECATED_MSG("ofxAVFoundationVideoPlayer::getPixelsRef() is deprecated, use getPixels() instead.", const ofPixels & getPixelsRef() const);
-    OF_DEPRECATED_MSG("ofxAVFoundationVideoPlayer::getTexture() is deprecated, use getTexturePtr() instead.", ofTexture * getTexture());
+//    OF_DEPRECATED_MSG("ofxAVFoundationVideoPlayer::getTexture() is deprecated, use getTexturePtr() instead.", ofTexture * getTexture());
     
 protected:
     

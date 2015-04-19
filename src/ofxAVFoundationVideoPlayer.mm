@@ -196,7 +196,7 @@ void ofxAVFoundationVideoPlayer::draw(const ofRectangle & rect) {
 }
 
 void ofxAVFoundationVideoPlayer::draw(float x, float y, float w, float h) {
-    getTexturePtr()->draw(x, y, w, h);
+    getTexture()->draw(x, y, w, h);
 }
 
 //--------------------------------------------------------------
@@ -227,20 +227,20 @@ bool ofxAVFoundationVideoPlayer::isFrameNew() const {
 }
 
 //--------------------------------------------------------------
-const ofPixels & ofxAVFoundationVideoPlayer::getPixels() const {
-    return const_cast<ofxAVFoundationVideoPlayer *>(this)->getPixels();
-}
+//const ofPixels & ofxAVFoundationVideoPlayer::getPixels() const {
+//    return const_cast<ofxAVFoundationVideoPlayer *>(this)->getPixels();
+//}
 
-ofPixels & ofxAVFoundationVideoPlayer::getPixels() {
+unsigned char * ofxAVFoundationVideoPlayer::getPixels() {
     if(isLoaded() == false) {
         ofLogError("ofxiOSVideoPlayer") << "getPixels(): Returning pixels that may be unallocated. Make sure to initialize the video player before calling getPixels.";
-        return pixels;
+        return pixels.getPixels();
     }
     
     if(bUpdatePixels == false) {
         // if pixels have not changed,
         // return the already calculated pixels.
-        return pixels;
+        return pixels.getPixels();
     }
     
     if(bResetPixels == true) {
@@ -262,7 +262,7 @@ ofPixels & ofxAVFoundationVideoPlayer::getPixels() {
     };
     
     vImage_Buffer dest = {
-        pixels.getData(),
+        pixels.getPixels(),
         pixels.getHeight(),
         pixels.getWidth(),
         pixels.getWidth() * pixels.getNumChannels()
@@ -307,11 +307,11 @@ ofPixels & ofxAVFoundationVideoPlayer::getPixels() {
     
     bUpdatePixels = false;
     
-    return pixels;
+    return pixels.getPixels();
 }
 
 //--------------------------------------------------------------
-ofTexture * ofxAVFoundationVideoPlayer::getTexturePtr() {
+ofTexture * ofxAVFoundationVideoPlayer::getTexture() {
     
     if(isLoaded() == false) {
         return &videoTexture;
@@ -341,7 +341,7 @@ ofTexture * ofxAVFoundationVideoPlayer::getTexturePtr() {
             return NULL;
         }
         
-        videoTexture.loadData(getPixels());
+        videoTexture.loadData(getPixelsRef());
     }
     
     bUpdateTexture = false;
@@ -695,14 +695,14 @@ bool ofxAVFoundationVideoPlayer::loadMovie(string name) {
 }
 
 ofPixels & ofxAVFoundationVideoPlayer::getPixelsRef() {
-    return getPixels();
+    return pixels;
 }
 
 const ofPixels & ofxAVFoundationVideoPlayer::getPixelsRef() const {
-    return getPixels();
+    return pixels;
 }
 
-ofTexture * ofxAVFoundationVideoPlayer::getTexture() {
-    return getTexturePtr();
-}
+//ofTexture * ofxAVFoundationVideoPlayer::getTexture() {
+//    return getTexturePtr();
+//}
 
